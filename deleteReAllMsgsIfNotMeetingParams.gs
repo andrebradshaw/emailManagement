@@ -32,13 +32,9 @@ function gmailmsgs() {
     var msgThread = message[m].getMessages();
     for (t = 0; t < msgThread.length; t++) {
       var msg = msgThread[t];
-      var messageId = msg.getId(); //get its ID
       if (msg.isUnread() === true) {
-        // Now fetch the same message using that ID.
-        //var messageById = GmailApp.getMessageById(messageId);
         var msgBody = msg.getPlainBody();
         var subject = msg.getSubject();
-
         var allReceivers = msg.getTo();
         var isToMe = sentToMe(msg);
         var isReply = /re:/gi.test(subject.toString());
